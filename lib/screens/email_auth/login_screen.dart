@@ -45,45 +45,119 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: const Text("Login"),
-      ),
+      backgroundColor: Colors.grey.shade300,
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            TextField(
-              controller: emailcontroller,
-              decoration: const InputDecoration(hintText: "Email"),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: passcontroller,
-              decoration: const InputDecoration(hintText: "Password"),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
-                onPressed: () {
-                  login();
-                },
-                child: const Text("Login")),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()));
-              },
-              child: const Text(
-                "Create an Account",
-                style: TextStyle(color: Colors.teal),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
+
+              // logo
+              const Icon(
+                Icons.lock,
+                size: 100,
               ),
-            )
-          ],
+
+              const SizedBox(height: 50),
+              Text(
+                "Login",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 35,
+                    color: Colors.grey.shade700),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Welcome Back you've been missed!",
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: Colors.grey.shade700),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              TextField(
+                obscureText: false,
+                controller: emailcontroller,
+                decoration: InputDecoration(
+                    hintText: "Email",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400)),
+                    fillColor: Colors.grey.shade200,
+                    filled: true),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                obscureText: true,
+                controller: passcontroller,
+                decoration: const InputDecoration(hintText: "Password"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  onPressed: () {
+                    login();
+                  },
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  )),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpScreen()));
+                },
+                child: const Text(
+                  "Create an Account",
+                  style: TextStyle(color: Colors.black),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

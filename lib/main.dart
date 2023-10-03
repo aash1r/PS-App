@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/screens/email_auth/login_screen.dart';
 import 'package:flutter_firebase/screens/home_screen.dart';
-import 'package:flutter_firebase/screens/phone_auth/signin_with_phone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: (FirebaseAuth.instance.currentUser != null)
-          ? HomeScreen()
+          ? const HomeScreen()
           : const LoginScreen(),
     );
   }

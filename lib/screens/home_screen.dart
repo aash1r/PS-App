@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/screens/email_auth/login_screen.dart';
-import 'package:flutter_firebase/screens/phone_auth/signin_with_phone.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -26,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (name != "") {
       await firestore.collection("Users").add({"name": name});
     } else {
-      print("Please fill all the fields");
+      var snackbar = SnackBar(content: Text("Please fill all the fields!"));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
 
